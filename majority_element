@@ -1,0 +1,14 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        d={}
+        maxc=0
+        maxe=nums[0]
+        for x in nums:
+            if x not in d:
+                d[x]=1 
+            else:
+                d[x]+=1 
+                if d[x]>maxc:
+                    maxc=d[x]
+                    maxe=x 
+        return maxe   
