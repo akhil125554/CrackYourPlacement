@@ -1,0 +1,16 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        cur_sum=0
+        res=0
+        d={0:1}
+        for x in nums:
+            cur_sum+=x
+            rem=(cur_sum)%k
+            if rem<0:
+                rem+=k
+            if rem in d:
+                res+=d[rem]
+            else:
+                d[rem]=0         
+            d[rem]+=1 
+        return res   
