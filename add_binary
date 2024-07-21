@@ -1,16 +1,19 @@
-class Solution:
-    def addBinary(self, a: str, b: str) -> str:
-        res=""
-        carry=0
-        a,b=a[::-1],b[::-1]
-        for i in range(max(len(a),len(b))):
-            dig1=ord(a[i])-ord("0") if i<len(a) else 0
-            dig2=ord(b[i])-ord("0") if i<len(b) else 0 
-            total=dig1+dig2+carry
-            carry=total//2
-            c=str(total%2)
-            res=c+res
+def addBinary(self, A: str, B: str) -> str:
+        res = []
+        carry = 0
+        A = A[::-1]
+        B = B[::-1]
+
+        for i in range(max(len(A), len(B))):
+            dig1 = ord(A[i]) - ord('0') if i < len(A) else 0
+            dig2 = ord(B[i]) - ord('0') if i < len(B) else 0
+            total = dig1 + dig2 + carry
+            res.append(str(total % 2))
+            carry = total // 2
+
         if carry:
-            return "1"+res 
-        return res       
-              
+            res.append("1")
+
+        result = ''.join(res[::-1])
+        return result.lstrip('0') or '0'
+
