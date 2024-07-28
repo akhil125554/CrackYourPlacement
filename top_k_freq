@@ -1,0 +1,18 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        d={}
+        for x in nums:
+            if x in d:
+                d[x]+=1 
+            else:
+                d[x]=1 
+        topk=[]
+        for key,value in d.items():
+            heappush(topk,(value,key))
+            if len(topk)>k:
+                heappop(topk)
+        res=[]        
+        while topk:
+            res.append(heappop(topk)[1])
+        return res            
+        
