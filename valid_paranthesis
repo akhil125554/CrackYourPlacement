@@ -1,0 +1,17 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack=[]
+        dict={")":"(","}":"{","]":"["}
+        for x in s:
+            if x in dict.values():
+                stack.append(x)
+            elif x in dict:
+                if stack and stack[-1]==dict[x]:
+                    stack.pop()
+                else:
+                    return False 
+            else:
+                return False 
+        return not stack
+
+        
